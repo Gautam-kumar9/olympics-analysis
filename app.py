@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from matplotlib.pyplot import autoscale
 
 import preprocessor,helper
 import plotly.express as px
@@ -183,19 +182,3 @@ if user_menu == 'Athlete wise Analysis':
     fig.update_layout(autosize=False, width=1000, height=600)
 
     st.plotly_chart(fig)
-# Custom CSS to set a background image
-def set_background_image(image_url):
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("{image_url}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
