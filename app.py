@@ -4,7 +4,7 @@ import pandas as pd
 import zipfile
 import os
 
-zip_path = "athletic_data.zip"  # Change this to your ZIP file path
+zip_path = "athlete_events.zip"  # Change this to your ZIP file path
 extract_folder = "athletic_data"
 
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
