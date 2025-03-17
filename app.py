@@ -1,6 +1,18 @@
 import streamlit as st
 import pandas as pd
 
+import zipfile
+import os
+
+zip_path = "athletic_data.zip"  # Change this to your ZIP file path
+extract_folder = "athletic_data"
+
+with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+    zip_ref.extractall(extract_folder)
+
+# Now read the CSV files
+
+
 import preprocessor,helper
 import plotly.express as px
 import matplotlib.pyplot as plt
@@ -9,7 +21,11 @@ import plotly.figure_factory as ff
 # from helper import medal_tally
 st.sidebar.title("Olympics Analysis")
 st.sidebar.image('https://tse1.mm.bing.net/th?id=OIP.dTvYWFiuSMkD-anpkDuQPQHaEK&pid=Api&P=0&h=180')
-df = pd.read_csv('athlete_events.csv')
+# df = pd.read_csv('athlete_events.csv')
+
+df = pd.read_csv(os.path.join(extract_folder, 'athlete_events.csv'))
+# df_region = pd.read_csv(os.path.join(extract_folder, 'noc_regions.csv'))
+
 df_region = pd.read_csv('noc_regions.csv')
 df = preprocessor.preprocess(df,df_region)
 user_menu = st.sidebar.radio(
